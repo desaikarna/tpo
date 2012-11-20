@@ -1,7 +1,7 @@
 module.exports = function(app) {
   
     app.get('/', function(request, response) {
-        response.send('Hello Core II!');
+        response.send('Hello World II!');
     });
   
 }
