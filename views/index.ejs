@@ -1,6 +1,11 @@
-<% layout('layout') -%>
-<% script('foo.js') -%>
-<% stylesheet('foo.css') -%>
-<h1>This is a <%=what%></h1>
+<% layout('layouts/layout_0_0_1') -%>
+<% script('js/foo.js') -%>
+<% stylesheet('styles/style.css') -%>
+<div class="bordered">
+    <h1>This is a <%=what%></h1>
+</div>
+<%-insert%>
+<%-partial('partials/button')%>
+
 <% block('header', "<p>Header.</p>") -%>
 <% block('footer', "<p>Footer.</p>") -%>
