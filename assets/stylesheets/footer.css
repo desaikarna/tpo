@@ -1,0 +1,12 @@
+.footer {
+    height:40px;
+    width:100%;
+    background-color:#000000;
+    margin:0;
+    padding:0;
+}
+
+.footerfloat {
+    position:fixed;
+    bottom:0;
+}
