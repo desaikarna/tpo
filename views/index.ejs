@@ -1,8 +1,8 @@
-<% layout('layouts/layout_0_0_1') -%>
-<% script('js/foo.js') -%>
+<% layout('layouts/layout') -%>
+<% script('js/index.js') -%>
 <% stylesheet('styles/style.css') -%>
+<% block('script', '<script type="text/javascript"> $(document).ready(function(){ init();}); </script>' ) -%>
 <div class="bordered">
     <h1>This is a <%=what%></h1>
+    <input id="btn1" type="button" value="OK" />
 </div>
-<!--<% block('header', "<p>Header.</p>") -%>
-<% block('footer', "<p>Footer.</p>") -%>-->
