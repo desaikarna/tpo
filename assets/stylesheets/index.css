@@ -1,3 +1,11 @@
 .bordered {
   border: solid 2px black;
+  position: relative;
+  height: 205px;
+}
+
+.data {
+    position: absolute;
+    top: 0;
+    right: 0;
 }

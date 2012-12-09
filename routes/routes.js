@@ -5,7 +5,7 @@ module.exports = function(app) {
     });
     
     app.get('/', function(request, response){
-        response.render('index', { what: 'template', title: 'MLD', insert: 'button' });
+        response.render('index', { what: 'template', title: 'TPO'});
     });
 
 };

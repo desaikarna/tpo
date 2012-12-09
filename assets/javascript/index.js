@@ -7,30 +7,38 @@ var index = function() {
     var btn2 = null;
     var btn3 = null;
     var btn4 = null;
+    var urltxt = null;
+    var datata = null;
     var btnclick = function(method){
+        urltxt = $("#url");
+        datata = $("#data");
+        var url = "http://api.thirdplanetout.com";
+        if (urltxt.val().length > 0) {
+            url = urltxt.val();
+        }
+        var data = {};
+        if (datata.val().length > 1) {
+            data = JSON.parse(datata.val());
+        }
         $.ajax({
             type: method,
             url: "/request",
             headers: {
                 accept: "application/json",
-                uri: "http://api.thirdplanetout.com"
+                uri: url
             },
-            data: {
-                "nameFirst": "Robert",
-                "nameMiddle": "Brian",
-                "nameLast": "Amesbury"
-            },
+            data: data,
             datatype: "json",
             beforeSend: function(jqXHR, settings){
                 
             },
             success: function(data, textStatus, jqXHR){
-                alert("success data:" + data);
+                console.log("success data:" + data);
                 console.log("success textStatus:" + textStatus);
                 console.log("success jqXHR:" + jqXHR);
             },
             error: function(jqXHR, textStatus, errorThrown){
-                alert("error jqXHR:" + jqXHR);
+                console.log("error jqXHR:" + jqXHR);
                 console.log("error textStatus:" + textStatus);
                 console.log("error errorThrown:" + errorThrown);
             },
