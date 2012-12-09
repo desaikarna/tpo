@@ -3,37 +3,55 @@ function init(){
 }
 
 var index = function() {
-    var btn = null;
-    var btnclick = function(){
+    var btn1 = null;
+    var btn2 = null;
+    var btn3 = null;
+    var btn4 = null;
+    var btnclick = function(method){
         $.ajax({
-            type: "GET",
-            url: "http://api.thirdplanetout.com",
-            data: {},
-            datatype: "json",
-            success: function(a, b, c, d){
-                console.log(a);
-                console.log(b);
-                console.log(c);
-                console.log(d);
+            type: method,
+            url: "/request",
+            headers: {
+                accept: "application/json",
+                uri: "http://api.thirdplanetout.com"
             },
-            error: function(a, b, c, d){
-                console.log(a);
-                console.log(b);
-                console.log(c);
-                console.log(d);
+            data: {
+                "nameFirst": "Robert",
+                "nameMiddle": "Brian",
+                "nameLast": "Amesbury"
+            },
+            datatype: "json",
+            beforeSend: function(jqXHR, settings){
+                
+            },
+            success: function(data, textStatus, jqXHR){
+                alert("success data:" + data);
+                console.log("success textStatus:" + textStatus);
+                console.log("success jqXHR:" + jqXHR);
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                alert("error jqXHR:" + jqXHR);
+                console.log("error textStatus:" + textStatus);
+                console.log("error errorThrown:" + errorThrown);
+            },
+            complete: function(jqXHR, textStatus){
+                
             }
-            
         });
     };
     
-    //btn = $('#btn1');
-//    var btn = document.getElementById("btn1");
     
     
     return {
         run: function() {
-            btn = document.getElementById("btn1");
-            btn.onclick = btnclick;
+            btn1 = $("#btn1");
+            btn2 = $("#btn2");
+            btn3 = $("#btn3");
+            btn4 = $("#btn4");           
+            btn1.click({}, function(){btnclick("GET");});
+            btn2.click({}, function(){btnclick("POST");});
+            btn3.click({}, function(){btnclick("PUT");});
+            btn4.click({}, function(){btnclick("DELETE");});
         }    
     };
 }();

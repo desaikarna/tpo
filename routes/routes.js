@@ -8,4 +8,4 @@ module.exports = function(app) {
         response.render('index', { what: 'template', title: 'MLD', insert: 'button' });
     });
 
-}
+};
