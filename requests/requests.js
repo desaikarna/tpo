@@ -43,7 +43,7 @@ module.exports = function(app) {
             "method": request.method,
             "headers": {
                 "Accept": request.headers.accept,
-                "dev-key": "1234"
+                "devkey": "1234"
             },
             "url": request.headers.uri,
         };
