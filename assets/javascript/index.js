@@ -12,8 +12,7 @@ var index = function() {
     var btnclick = function(method){
         urltxt = $("#url");
         datata = $("#data");
-//        var url = "http://api.thirdplanetout.com";
-        var url = "http://tpo-api.r-brian-amesbury.c9.io";
+        var url = "/";
         if (urltxt.val().length > 0) {
             url = urltxt.val();
         }
@@ -26,7 +25,7 @@ var index = function() {
             url: "/request",
             headers: {
                 accept: "application/json",
-                uri: url
+                resource: url
             },
             data: data,
             datatype: "json",
@@ -40,6 +39,7 @@ var index = function() {
             },
             error: function(jqXHR, textStatus, errorThrown){
                 console.log("error jqXHR:" + jqXHR);
+                console.log(jqXHR);
                 console.log("error textStatus:" + textStatus);
                 console.log("error errorThrown:" + errorThrown);
             },

@@ -11,6 +11,9 @@ module.exports = function(app) {
     });
     
     function options (request) {
+//        var url = "http://api.thirdplanetout.com";
+        var url = "http://tpo-api.r-brian-amesbury.c9.io";
+
         var opts = {
             
             "method": request.method,
@@ -18,7 +21,7 @@ module.exports = function(app) {
                 "Accept": request.headers.accept,
                 "devkey": "1234"
             },
-            "url": request.headers.uri,
+            "url": url + request.headers.resource,
         };
         if (Object.keys(request.query).length) {
             opts.qs = request.query;
