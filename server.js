@@ -1,5 +1,5 @@
 var express = require('express');
-var engine = require('ejs-locals')
+var engine = require('ejs-locals');
 var routes = require(__dirname +'/routes/routes.js');
 var requests = require(__dirname +'/requests/requests.js');
 var app = express();

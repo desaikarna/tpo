@@ -10,33 +10,6 @@ module.exports = function(app) {
         });
     });
     
-//    app.post('/request', function(request, response) {
-//        httprequest.post(options(request), function(error, res, body){
-//            if (!error && res.statusCode < 300){
-//                response.send(body);
-//            }
-//        });
-//    });
-//    
-//    app.put('/request', function(request, response) {
-//        httprequest.put(options(request), function(error, res, body){
-//            if (!error && res.statusCode < 300){
-//                response.send(body);
-//            }
-//        });
-//    });
-//    
-//    app.dele('/request', function(request, response) {
-//        console.log("POST");
-//        httprequest.post(options(request), function(error, res, body){
-//            if (!error && res.statusCode < 300){
-//                response.send(body);
-//            }
-//        });
-//    });
-//    
-    
-    
     function options (request) {
         var opts = {
             
@@ -51,7 +24,7 @@ module.exports = function(app) {
             opts.qs = request.query;
         }
         if (Object.keys(request.body).length) {
-            opts.body = JSON.stringify(request.body);
+            opts.json = request.body;
         }
         console.log(opts);
         return opts;

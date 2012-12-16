@@ -12,7 +12,8 @@ var index = function() {
     var btnclick = function(method){
         urltxt = $("#url");
         datata = $("#data");
-        var url = "http://api.thirdplanetout.com";
+//        var url = "http://api.thirdplanetout.com";
+        var url = "http://tpo-api.r-brian-amesbury.c9.io";
         if (urltxt.val().length > 0) {
             url = urltxt.val();
         }
