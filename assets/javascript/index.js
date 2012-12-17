@@ -33,14 +33,17 @@ var index = function() {
                 
             },
             success: function(data, textStatus, jqXHR){
-                console.log("success data:" + data);
-                console.log("success textStatus:" + textStatus);
-                console.log("success jqXHR:" + jqXHR);
+                console.log("success");
+                console.log(data);
+                console.log("textStatus: ");
+                console.log(textStatus);
+                console.log("jqXHR: ");
+                console.log(jqXHR);
             },
             error: function(jqXHR, textStatus, errorThrown){
-                console.log("error jqXHR:" + jqXHR);
+                console.log("error");
                 console.log(jqXHR);
-                console.log("error textStatus:" + textStatus);
+                console.log("textStatus: " + textStatus);
                 console.log("error errorThrown:" + errorThrown);
             },
             complete: function(jqXHR, textStatus){

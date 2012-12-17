@@ -4,18 +4,14 @@ module.exports = function(app) {
   
     app.all('/request', function(request, response) {
         httprequest(options(request), function(error, res, body){
-            if (!error && res.statusCode < 300){
-                response.send(body);
-            }
+            response.json(res.statusCode, body);
         });
     });
     
     function options (request) {
 //        var url = "http://api.thirdplanetout.com";
         var url = "http://tpo-api.r-brian-amesbury.c9.io";
-
         var opts = {
-            
             "method": request.method,
             "headers": {
                 "Accept": request.headers.accept,
@@ -29,8 +25,6 @@ module.exports = function(app) {
         if (Object.keys(request.body).length) {
             opts.json = request.body;
         }
-        console.log(opts);
         return opts;
     }
-    
 };
