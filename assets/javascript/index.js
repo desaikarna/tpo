@@ -33,12 +33,13 @@ var index = function() {
                 
             },
             success: function(data, textStatus, jqXHR){
-                console.log("success");
+//                console.log("success");
                 console.log(data);
-                console.log("textStatus: ");
-                console.log(textStatus);
-                console.log("jqXHR: ");
-                console.log(jqXHR);
+//                console.log("textStatus: ");
+//                console.log(textStatus);
+//                console.log("jqXHR: ");
+//                console.log(jqXHR);
+//                console.log(jqXHR.getResponseHeader('link'));
             },
             error: function(jqXHR, textStatus, errorThrown){
                 console.log("error");
