@@ -1,5 +1,5 @@
 var node_static = require('node-static');
-var fileServer = new node_static.Server('./views');
+var fileServer = new node_static.Server('./views', {cache:0, serverInfo:'server.thirdplanetout.com'});
 
 require('http').createServer(function (request, response) {
     request.addListener('end', function () {
