@@ -1,0 +1,51 @@
+<html>
+    <head>
+		<title>
+			Third Planet Out
+		</title>
+		<style type='text/css' media='all'>
+			*{margin:0;padding:0;border-width:0;}
+			.background{background:#252626;}
+			.foreground{background:#595B5C;}
+			.wrapper{height:100%;width:100%;position:relative;}
+			.body{height:80%;width: 80%;position:absolute;top:10%;right:10%;bottom:10%;left:10%;}
+			.content{height:90%;width:90%;position:absolute;top:5%;right:5%;bottom:5%;left:5%;overflow:hidden;}
+			.font{font-family:Verdana, Arial;}
+			#error{font-size:96px;}
+		</style>
+	</head>
+	<body>
+		<div class='wrapper background'>
+			<div class='body'>
+				<div id='body' class='wrapper foreground'>
+					<div class='content'>
+						<span id='error' class="font">Third Planet Out</span>
+						<br/><br/>	
+						<span class="font">We're building as fast as we can</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type='text/javascript'>
+			window.onload = setup();
+			function setup() {
+				var body = document.getElementById('body');
+				body.onclick = function() {
+					window.location = "http://www.thirdplanetout.com/"
+				}
+				var error = document.getElementById('error');
+				elipsis();
+			}
+			function elipsis() {
+				var value = error.innerText;
+				value = value + '.';
+				var temp = value.indexOf('....');
+				if (temp != -1) {
+					value = value.substr(0, temp);
+				}
+				error.innerText = value;
+				setTimeout("elipsis()", 500);
+			}
+		</script>
+	</body>
+</html>
