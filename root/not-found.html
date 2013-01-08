@@ -11,41 +11,20 @@
 			.body{height:80%;width: 80%;position:absolute;top:10%;right:10%;bottom:10%;left:10%;}
 			.content{height:90%;width:90%;position:absolute;top:5%;right:5%;bottom:5%;left:5%;overflow:hidden;}
 			.font{font-family:Verdana, Arial;}
-			#error{font-size:96px;}
+			.title{font-size:96px;}
 		</style>
 	</head>
 	<body>
 		<div class='wrapper background'>
 			<div class='body'>
-				<div id='body' class='wrapper foreground'>
+				<div class='wrapper foreground'>
 					<div class='content'>
-						<span id='error' class="font">... Opps! 404</span>
+						<span class="font title">... Opps! 404</span>
     					<br/><br/>	
 						<span class="font">We haven't yet built what you are looking for!</span>
 					</div>
 				</div>
 			</div>
 		</div>
-		<script type='text/javascript'>
-			window.onload = setup();
-			function setup() {
-				var body = document.getElementById('body');
-				body.onclick = function() {
-					window.location = "http://www.thirdplanetout.com/"
-				}
-				var error = document.getElementById('error');
-				elipsis();
-			}
-			function elipsis() {
-				var value = error.innerText;
-				value = value + '.';
-				var temp = value.indexOf('....');
-				if (temp != -1) {
-					value = value.substr(0, temp);
-				}
-				error.innerText = value;
-				setTimeout("elipsis()", 500);
-			}
-		</script>
 	</body>
 </html>
