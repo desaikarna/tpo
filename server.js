@@ -1,7 +1,7 @@
 var node_static = require('node-static');
 var cache = 3600;
 if (!process.env.NODE_ENV){
-    cache = 'no-cache, must-revalidate';
+    cache = 0;
 }
 var fileServer = new node_static.Server('./root', {cache:cache, serverInfo:'server.thirdplanetout.com'});
 var errorMode = false;

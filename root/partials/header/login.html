@@ -1,0 +1,28 @@
+<table class='logintable'>
+    <tr>
+        <td>
+            <span>username:</span>
+        </td>
+        <td>
+            <input type="text" class='logintextbox'/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span>password:</span>
+        </td>
+        <td>
+            <input type="password" class='logintextbox'/>
+        </td>
+    </tr>
+    <tr>
+        <td colspan=2>
+            <form ng-submit="signin()" class='loginform'>
+                <input type="submit" value="Login" class='loginbutton'>
+            </form>
+            <form ng-submit="cancel()" class='loginform'>
+                <input type="submit" value="Cancel" class='loginbutton'>
+            </form>
+        </td>
+    </tr>
+</table>
