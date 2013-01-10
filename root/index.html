@@ -1,12 +1,15 @@
-<html>
+<html ng-app>
     <head>
 		<title>
 			Third Planet Out
 		</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+        <script type="text/javascript" src="http://cdn.thirdplanetout.com/js/tpo.controllers.js"></script>
         <link rel="stylesheet" type="text/css" href="http://cdn.thirdplanetout.com/css/tpo.website.css">
 	</head>
 	<body>
 		<div class='wrapper background'>
+            <div ng-include src="'partials/header.html'"></div>
 			<div class='body'>
 				<div class='wrapper foreground'>
 					<div class='content'>
