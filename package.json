@@ -2,7 +2,8 @@
   "name": "tpo",
   "version": "0.0.1",
   "dependencies": {
-    "node-static": "~0.6.7"
+    "express": "~3.0.6",
+    "request": "*"
   },
   "engines": {
     "node": "0.8.x",

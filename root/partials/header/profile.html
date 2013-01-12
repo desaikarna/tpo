@@ -4,7 +4,7 @@
             <span>username:</span>
         </td>
         <td>
-            <input type="text" class='logintextbox'/>
+            <input type="text" ng-model='account.username.value'; class='logintextbox'/>
         </td>
     </tr>
     <tr>
@@ -12,7 +12,7 @@
             <span>current password:</span>
         </td>
         <td>
-            <input type="password" class='logintextbox'/>
+            <input type="password" ng-model='account.password.value'; class='logintextbox'/>
         </td>
     </tr>
     <tr>
@@ -20,7 +20,7 @@
             <span>new password:</span>
         </td>
         <td>
-            <input type="password" class='logintextbox'/>
+            <input type="password" ng-model='account.passwordnew.value'; class='logintextbox'/>
         </td>
     </tr>
     <tr>
@@ -28,15 +28,15 @@
             <span>confirm it:</span>
         </td>
         <td>
-            <input type="password" class='logintextbox'/>
+            <input type="password" ng-model='account.confirm.value' class='logintextbox' ng-class="account.confirm.style" ui-validate='passwordConfirm'/>
         </td>
     </tr>
     <tr>
         <td>
-            <span>PIN:</span>
+            <span>pin:</span>
         </td>
         <td>
-            <input type="text" class='logintextbox'/>
+            <input type="text" ng-model='account.pin.value'; class='logintextbox'/>
         </td>
     </tr>
     <tr>
@@ -44,7 +44,7 @@
             <span>email:</span>
         </td>
         <td>
-            <input type="text" class='logintextbox'/>
+            <input type="text" ng-model='account.email.value'; class='logintextbox'/>
         </td>
     </tr>
     <tr>
@@ -52,7 +52,7 @@
             <span>first name:</span>
         </td>
         <td>
-            <input type="text" class='logintextbox'/>
+            <input type="text" ng-model='account.firstname.value'; class='logintextbox'/>
         </td>
     </tr>
     <tr>
@@ -60,7 +60,7 @@
             <span>last name:</span>
         </td>
         <td>
-            <input type="text" class='logintextbox'/>
+            <input type="text" ng-model='account.lastname.value'; class='logintextbox'/>
         </td>
     </tr>
     <tr>
@@ -68,7 +68,7 @@
             <span>display name:</span>
         </td>
         <td>
-            <input type="text" class='logintextbox'/>
+            <input type="text" ng-model='account.displayname.value'; class='logintextbox'/>
         </td>
     </tr>
     <tr>
@@ -76,7 +76,7 @@
             <form ng-submit="update()" class='loginform'>
                 <input type="submit" value="Update" class='loginbutton'>
             </form>
-            <form ng-submit="cancel()" class='loginform'>
+            <form ng-submit="cancel(0)" class='loginform'>
                 <input type="submit" value="Cancel" class='loginbutton'>
             </form>
         </td>
