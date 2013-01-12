@@ -4,7 +4,7 @@
             <span>username:</span>
         </td>
         <td>
-            <input type="text" class='logintextbox'/>
+            <input type="text" ng-model='account.username.value'; class='logintextbox'/>
         </td>
     </tr>
     <tr>
@@ -12,7 +12,7 @@
             <span>password:</span>
         </td>
         <td>
-            <input type="password" class='logintextbox'/>
+            <input type="password" ng-model='account.password.value' class='logintextbox'/>
         </td>
     </tr>
     <tr>
@@ -20,7 +20,7 @@
             <form ng-submit="signin()" class='loginform'>
                 <input type="submit" value="Login" class='loginbutton'>
             </form>
-            <form ng-submit="cancel()" class='loginform'>
+            <form ng-submit="cancel(4)" class='loginform'>
                 <input type="submit" value="Cancel" class='loginbutton'>
             </form>
         </td>

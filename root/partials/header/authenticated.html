@@ -2,7 +2,7 @@
     <tr>
         <td colspan=2>
             <form ng-submit="profile()" class='loginform'>
-                <input type="submit" value="Profile" class='loginbutton'>
+                <input type="submit" value={{account.username.value}} class='loginbutton'>
             </form>
             <form ng-submit="logout()" class='loginform'>
                 <input type="submit" value="Logout"class='loginbutton'>
