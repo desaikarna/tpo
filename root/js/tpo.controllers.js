@@ -5,7 +5,9 @@ function HeaderLoginCtrl($scope, $http) {
     function resetAccount(){
         $scope.account = {
             username:{
-                value:''
+                value:'',
+                minLength:6,
+                tooltip:'uSeRnAmE'
             },
             password:{
                 value:''
@@ -34,13 +36,41 @@ function HeaderLoginCtrl($scope, $http) {
             }
         };    
     }
+    function validateUsername(calback){
+        if ($scope.account.username.value.length < $scope.account.username.minLength) {
+            calback(false);
+        }
+        var config = {
+            method:'POST',
+            url:'/request',
+            headers:{resource:'/validate/login/' + $scope.account.username.value},
+        };
+        $http(config).
+            success(function(data, status, headers, config) {
+                console.log(data);
+                console.log(data.value);
+                calback(false);
+            }).
+            error(function(data, status, headers, config) {
+                console.log(data);
+                calback(false);
+        }); 
+    }
+    
+    function sleep(ms)
+    {
+		var dt = new Date();
+		dt.setTime(dt.getTime() + ms);
+		while (new Date().getTime() < dt.getTime());
+	}
     
     $scope.templates = [
         { url: 'partials/header/authenticated.html'},
         { url: 'partials/header/login.html'},
         { url: 'partials/header/profile.html'},
         { url: 'partials/header/register.html'},
-        { url: 'partials/header/unauthenticated.html'}
+        { url: 'partials/header/unauthenticated.html'},
+        { url: 'partials/header/processing.html'}
     ];
     
     resetAccount();
@@ -64,45 +94,52 @@ function HeaderLoginCtrl($scope, $http) {
         $scope.template = $scope.templates[index];
     };
     $scope.create = function(){
-        var config = {
-            method:'POST',
-            url:'/request',
-            params:{},
-            data:{
-                email : $scope.account.email.value,
-                login : $scope.account.username.value,
-                displayName : $scope.account.displayname.value,
-                firstName : $scope.account.firstname.value,
-                lastName : $scope.account.lastname.value,
-                password : $scope.account.password.value,
-                pin : $scope.account.pin.value
-            },
-            headers:{resource:'/account'},
-        };
-        $http(config).
-            success(function(data, status, headers, config) {
-                console.log('data');
-                console.log(data);
-                console.log('status');
-                console.log(status);
-                console.log('headers');
-                console.log(headers);
-                console.log('config');
-                console.log(config);
-                alert('ok');
-            }).
-            error(function(data, status, headers, config) {
-                console.log('data');
-                console.log(data);
-                console.log('status');
-                console.log(status);
-                console.log('headers');
-                console.log(headers);
-                console.log('config');
-                console.log(config);
-                alert('no');
+        validateUsername(function(isValid){
+            if(isValid){
+                var config = {
+                    method:'POST',
+                    url:'/request',
+                    params:{},
+                    data:{
+                        email : $scope.account.email.value,
+                        login : $scope.account.username.value,
+                        displayName : $scope.account.displayname.value,
+                        firstName : $scope.account.firstname.value,
+                        lastName : $scope.account.lastname.value,
+                        password : $scope.account.password.value,
+                        pin : $scope.account.pin.value
+                    },
+                    headers:{resource:'/account'},
+                };
+                $http(config).
+                    success(function(data, status, headers, config) {
+                        console.log('data');
+                        console.log(data);
+                        console.log('status');
+                        console.log(status);
+                        console.log('headers');
+                        console.log(headers);
+                        console.log('config');
+                        console.log(config);
+                        alert('ok');
+                        $scope.template = $scope.templates[0];
+                    }).
+                    error(function(data, status, headers, config) {
+                        console.log('data');
+                        console.log(data);
+                        console.log('status');
+                        console.log(status);
+                        console.log('headers');
+                        console.log(headers);
+                        console.log('config');
+                        console.log(config);
+                        alert('no');
+                }); 
+            } else {
+                $scope.template = $scope.templates[3];    
+            }
         });
-        $scope.template = $scope.templates[0];
+        $scope.template = $scope.templates[5];
     };
     $scope.profile = function(){
         $scope.template = $scope.templates[2];
