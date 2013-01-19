@@ -5,8 +5,6 @@ module.exports = function(app) {
     app.all('/request', function(request, response) {
         httprequest(options(request), function(error, res, body){
             if (error || res.statusCode >= 300) {
-                console.log(error);
-                console.log(res);
                 response.json(500);    
             } else {
                 if (res.headers.link){

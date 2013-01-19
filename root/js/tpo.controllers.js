@@ -6,33 +6,64 @@ function HeaderLoginCtrl($scope, $http) {
         $scope.account = {
             username:{
                 value:'',
-                minLength:6,
-                tooltip:'uSeRnAmE'
+                tooltip:'Enter your desired username',
+                valid:false,
+                style:'',
+                minLength:6
             },
             password:{
-                value:''
+                value:'',
+                tooltip:'password',
+                valid:false,
+                style:''
             },
             passwordnew:{
-                value:''
+                value:'',
+                tooltip:'Your Password must:\ncontain at least one digit [0-9]\ncontain at least one lowercase alpha character [a-z]\ncontain at least one uppercase alpha character [A-Z]\ncontain at least one special character in the set {!,@,#,$,%,&,*,(,)}\nbe between 8 and 24 characters long',
+                valid:false,
+                style:'',
+                regex: {
+                    first:/^((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%&*()]).{8,24})$/,
+                    second:/^[\dA-z!#$]*$/
+                }
             },
             confirm:{
                 value:'',
+                tooltip:'Confirm your password',
+                valid:false,
                 style:''
             },
             pin:{
-                value:''
+                value:'',
+                tooltip:'Enter your pin',
+                valid:false,
+                style:'',
+                regex:/^\d{4}$/
             },
             email:{
-                value:''
+                value:'',
+                tooltip:'Enter your email address',
+                valid:false,
+                style:'',
+                regex:/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             },
             firstname:{
-                value:''
+                value:'',
+                tooltip:'Enter your first name',
+                valid:false,
+                style:''
             },
             lastname:{
-                value:''
+                value:'',
+                tooltip:'Enter your last name',
+                valid:false,
+                style:''
             },
             displayname:{
-                value:''
+                value:'',
+                tooltip:'Enter how you want you name displayed',
+                valid:false,
+                style:''
             }
         };    
     }
@@ -48,21 +79,17 @@ function HeaderLoginCtrl($scope, $http) {
         $http(config).
             success(function(data, status, headers, config) {
                 console.log(data);
-                console.log(data.value);
-                calback(false);
+                if(data.value) {
+                    $scope.account.username.style = '';
+                } else {
+                    $scope.account.username.style = 'invalid';
+                }
+                calback(data.value);
             }).
             error(function(data, status, headers, config) {
-                console.log(data);
                 calback(false);
         }); 
     }
-    
-    function sleep(ms)
-    {
-		var dt = new Date();
-		dt.setTime(dt.getTime() + ms);
-		while (new Date().getTime() < dt.getTime());
-	}
     
     $scope.templates = [
         { url: 'partials/header/authenticated.html'},
@@ -94,52 +121,54 @@ function HeaderLoginCtrl($scope, $http) {
         $scope.template = $scope.templates[index];
     };
     $scope.create = function(){
-        validateUsername(function(isValid){
-            if(isValid){
-                var config = {
-                    method:'POST',
-                    url:'/request',
-                    params:{},
-                    data:{
-                        email : $scope.account.email.value,
-                        login : $scope.account.username.value,
-                        displayName : $scope.account.displayname.value,
-                        firstName : $scope.account.firstname.value,
-                        lastName : $scope.account.lastname.value,
-                        password : $scope.account.password.value,
-                        pin : $scope.account.pin.value
-                    },
-                    headers:{resource:'/account'},
-                };
-                $http(config).
-                    success(function(data, status, headers, config) {
-                        console.log('data');
-                        console.log(data);
-                        console.log('status');
-                        console.log(status);
-                        console.log('headers');
-                        console.log(headers);
-                        console.log('config');
-                        console.log(config);
-                        alert('ok');
-                        $scope.template = $scope.templates[0];
-                    }).
-                    error(function(data, status, headers, config) {
-                        console.log('data');
-                        console.log(data);
-                        console.log('status');
-                        console.log(status);
-                        console.log('headers');
-                        console.log(headers);
-                        console.log('config');
-                        console.log(config);
-                        alert('no');
-                }); 
-            } else {
-                $scope.template = $scope.templates[3];    
-            }
-        });
-        $scope.template = $scope.templates[5];
+        if ($scope.account.passwordnew.valid && $scope.account.confirm.valid && $scope.account.pin.valid && $scope.account.email.valid) {
+            validateUsername(function(isValid){
+                if(isValid){
+                    var config = {
+                        method:'POST',
+                        url:'/request',
+                        params:{},
+                        data:{
+                            email : $scope.account.email.value,
+                            login : $scope.account.username.value,
+                            displayName : $scope.account.displayname.value,
+                            firstName : $scope.account.firstname.value,
+                            lastName : $scope.account.lastname.value,
+                            password : $scope.account.password.value,
+                            pin : $scope.account.pin.value
+                        },
+                        headers:{resource:'/account'},
+                    };
+                    $http(config).
+                        success(function(data, status, headers, config) {
+                            console.log('data');
+                            console.log(data);
+                            console.log('status');
+                            console.log(status);
+                            console.log('headers');
+                            console.log(headers);
+                            console.log('config');
+                            console.log(config);
+                            alert('ok');
+                            $scope.template = $scope.templates[0];
+                        }).
+                        error(function(data, status, headers, config) {
+                            console.log('data');
+                            console.log(data);
+                            console.log('status');
+                            console.log(status);
+                            console.log('headers');
+                            console.log(headers);
+                            console.log('config');
+                            console.log(config);
+                            alert('no');
+                    }); 
+                } else {
+                    $scope.template = $scope.templates[3];    
+                }
+            });
+            $scope.template = $scope.templates[5];
+        }
     };
     $scope.profile = function(){
         $scope.template = $scope.templates[2];
@@ -153,11 +182,40 @@ function HeaderLoginCtrl($scope, $http) {
     };
 
 //    Validation Functions
-    $scope.passwordConfirm = function(value) {
+    $scope.passwordConfirmValidation = function(value) {
         if(value !== '' && value !== $scope.account.password.value){
             $scope.account.confirm.style = 'invalid';
+            $scope.account.confirm.valid = false;
         } else {
             $scope.account.confirm.style = '';
+            $scope.account.confirm.valid = true;
+        }
+    };
+    $scope.pinValidation = function(value) {
+        if(value !== '' && !($scope.account.pin.regex.test(value))){
+            $scope.account.pin.style = 'invalid';
+            $scope.account.pin.valid = false;
+        } else {
+            $scope.account.pin.style = '';
+            $scope.account.pin.valid = true
+        }
+    };
+    $scope.emailValidation = function(value) {
+        if(value !== '' && !($scope.account.email.regex.test(value))){
+            $scope.account.email.style = 'invalid';
+            $scope.account.email.valid = false;
+        } else {
+            $scope.account.email.style = '';
+            $scope.account.email.valid = true;
+        }
+    };
+    $scope.passwordNewValidation = function(value) {
+        if(value !== '' && (!($scope.account.passwordnew.regex.first.test(value)) || !($scope.account.passwordnew.regex.second.test(value)))){
+            $scope.account.passwordnew.style = 'invalid';
+             $scope.account.passwordnew.valid = false;
+        } else {
+            $scope.account.passwordnew.style = '';
+            $scope.account.passwordnew.valid = true;
         }
     };
 }
