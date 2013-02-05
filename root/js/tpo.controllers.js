@@ -183,7 +183,7 @@ function HeaderLoginCtrl($scope, $http) {
 
 //    Validation Functions
     $scope.passwordConfirmValidation = function(value) {
-        if(value !== '' && value !== $scope.account.password.value){
+        if(value !== '' && value !== $scope.account.passwordnew.value){
             $scope.account.confirm.style = 'invalid';
             $scope.account.confirm.valid = false;
         } else {
@@ -197,7 +197,7 @@ function HeaderLoginCtrl($scope, $http) {
             $scope.account.pin.valid = false;
         } else {
             $scope.account.pin.style = '';
-            $scope.account.pin.valid = true
+            $scope.account.pin.valid = true;
         }
     };
     $scope.emailValidation = function(value) {
@@ -210,6 +210,7 @@ function HeaderLoginCtrl($scope, $http) {
         }
     };
     $scope.passwordNewValidation = function(value) {
+        console.log($scope.account.displayname.value);
         if(value !== '' && (!($scope.account.passwordnew.regex.first.test(value)) || !($scope.account.passwordnew.regex.second.test(value)))){
             $scope.account.passwordnew.style = 'invalid';
              $scope.account.passwordnew.valid = false;
