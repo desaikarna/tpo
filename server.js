@@ -6,6 +6,7 @@ var file = fs.readFileSync('./root/not-found.html');
 
 app.use(express.static('root'));
 app.use(express.bodyParser());
+app.use(express.cookieParser());
 
 require('./request/request.js')(app);
 
