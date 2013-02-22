@@ -4,7 +4,7 @@
             <span>username:</span>
         </td>
         <td>
-            <input type="text" ng-model='account.username.value'; class='logintextbox'/>
+            <input type="text" class='logintext' ng-model='account.username.value' ng-class='account.username.style' title={{account.username.tooltip}} >
         </td>
     </tr>
     <tr>
@@ -12,7 +12,7 @@
             <span>password:</span>
         </td>
         <td>
-            <input type="password" ng-model='account.password.value'; class='logintextbox'/>
+            <input type="password" class='logintext' ng-model='account.passwordnew.value' ng-class='account.passwordnew.style' title={{account.passwordnew.tooltip}} ui-validate='passwordNewValidation'>
         </td>
     </tr>
     <tr>
@@ -20,7 +20,7 @@
             <span>confirm it:</span>
         </td>
         <td>
-            <input type="password" ng-model='account.confirm.value' class='logintextbox' ng-class='account.confirm.style' ui-validate='passwordConfirm'/>
+            <input type="password" class='logintext' ng-model='account.confirm.value' ng-class='account.confirm.style' title={{account.confirm.tooltip}} ui-validate='passwordConfirmValidation'>
         </td>
     </tr>
     <tr>
@@ -28,7 +28,7 @@
             <span>pin:</span>
         </td>
         <td>
-            <input type="text" ng-model='account.pin.value'; class='logintextbox'/>
+            <input type="text" class='logintext' ng-model='account.pin.value'  ng-class='account.pin.style' title={{account.pin.tooltip}} ui-validate='pinValidation'>
         </td>
     </tr>
     <tr>
@@ -36,7 +36,7 @@
             <span>email:</span>
         </td>
         <td>
-            <input type="text" ng-model='account.email.value'; class='logintextbox'/>
+            <input type="text" class='logintext' ng-model='account.email.value'  ng-class='account.email.style' title={{account.email.tooltip}} ui-validate='emailValidation'>
         </td>
     </tr>
     <tr>
@@ -44,7 +44,7 @@
             <span>first name:</span>
         </td>
         <td>
-            <input type="text" ng-model='account.firstname.value'; class='logintextbox'/>
+            <input type="text" class='logintext' ng-model='account.firstname.value'  ng-class='account.firstname.style' title={{account.firstname.tooltip}} >
         </td>
     </tr>
     <tr>
@@ -52,7 +52,7 @@
             <span>last name:</span>
         </td>
         <td>
-            <input type="text" ng-model='account.lastname.value'; class='logintextbox'/>
+            <input type="text" class='logintext' ng-model='account.lastname.value' ng-class='account.lastname.style' title={{account.lastname.tooltip}} >
         </td>
     </tr>
     <tr>
@@ -60,16 +60,16 @@
             <span>display name:</span>
         </td>
         <td>
-            <input type="text" ng-model='account.displayname.value'; class='logintextbox'/>
+            <input type="text" class='logintext' ng-model='account.displayname.value' ng-class='account.displayname.style' title={{account.displayname.tooltip}} >
         </td>
     </tr>
     <tr>
         <td colspan=2>
             <form ng-submit="create()" class='loginform'>
-                <input type="submit" value="Register" class='loginbutton'>
+                <input type="submit" value="Register" title='Click to Register'>
             </form>
             <form ng-submit="cancel(4)" class='loginform'>
-                <input type="submit" value="Cancel" class='loginbutton'>
+                <input type="submit" value="Cancel" title='Click to Cancel Registration'>
             </form>
         </td>
     </tr>
