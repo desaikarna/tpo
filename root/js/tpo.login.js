@@ -99,7 +99,8 @@ function HeaderLoginCtrl($scope, $http) {
         { url: 'partials/header/profile.html'},
         { url: 'partials/header/register.html'},
         { url: 'partials/header/unauthenticated.html'},
-        { url: 'partials/header/processing.html'}
+        { url: 'partials/header/processing.html'},
+		{ url: 'partials/header/error.html'}
     ];
     
     resetAccount();
@@ -129,7 +130,10 @@ function HeaderLoginCtrl($scope, $http) {
 				$scope.template = $scope.templates[0];
 			}).
 			error(function(data, status, headers, config) {
-				$scope.template = $scope.templates[4];
+				console.log('signin error');
+				$scope.account.username.value = '';
+				$scope.account.password.value = '';
+				$scope.template = $scope.templates[6];
 			});
     };
     $scope.cancel = function(index){
@@ -160,6 +164,7 @@ function HeaderLoginCtrl($scope, $http) {
 				$scope.template = $scope.templates[0];
 			}).
 			error(function(data, status, headers, config) {
+				console.log('create error');
 				$scope.template = $scope.templates[4];
 		});
     };
@@ -182,6 +187,7 @@ function HeaderLoginCtrl($scope, $http) {
 				$scope.template = $scope.templates[2];
 			}).
 			error(function(data, status, headers, config) {
+				console.log('profile error');
 			});
 
     };
@@ -197,9 +203,26 @@ function HeaderLoginCtrl($scope, $http) {
 				$scope.template = $scope.templates[4];
 			}).
 			error(function(data, status, headers, config) {
+				console.log('logout error');
 				$scope.template = $scope.templates[4];
 			});
     };
+	$scope.delete = function(){
+		var config = {
+			method:'DELETE',
+			url:'/request',
+			headers:{resource:'/account/' + $scope.account.id.value}
+		};
+		$http(config).
+			success(function(data, status, headers, config) {
+				resetAccount();
+				$scope.template = $scope.templates[4];
+			}).
+			error(function(data, status, headers, config) {
+				console.log('delete error');
+				$scope.template = $scope.templates[4];
+			});
+	};
     $scope.update = function(){
 		$scope.template = $scope.templates[5];
 		var config = {
@@ -224,6 +247,7 @@ function HeaderLoginCtrl($scope, $http) {
 				$scope.template = $scope.templates[2];
 			}).
 			error(function(data, status, headers, config) {
+				console.log('update error');
 			});
     };
 }

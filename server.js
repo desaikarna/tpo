@@ -8,6 +8,10 @@ app.use(express.static('root'));
 app.use(express.bodyParser());
 app.use(express.cookieParser());
 
+app.get('/heartbeat', function(reqquest, response){
+	response.json(200, {});
+});
+
 require('./request/request.js')(app);
 
 app.get('*', function(request, response){
