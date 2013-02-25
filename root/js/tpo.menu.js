@@ -38,8 +38,8 @@ function MenuCtrl($scope) {
 		$scope.template = $scope.templates[0];
 	}
 
-	$scope.menu = function(uri) {
-		console.log(uri);
+	$scope.menu = function(page) {
+		$scope.$root.content = {url:'content/' + page.uri};
 	}
 
 
