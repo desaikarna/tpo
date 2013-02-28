@@ -1,27 +1,8 @@
 angular.module('tpo', ['ui']);
 
-function MenuCtrl($scope) {
+function MenuCtrl($scope, $http) {
 
-	$scope.pages = [
-		{
-			title: 'Home',
-			uri: 'home.html',
-			subpages: [
-				{
-					title: 'Contact',
-					uri:'contact.html',
-					subpages:[
-					]
-				}
-			]
-		},
-		{
-			title: 'About',
-			uri: 'about.html',
-			subpages: [
-			]
-		}
-	];
+	$scope.pages = [];
 
 	$scope.templates = [
 		{ url: 'partials/menu/closed.html'},
@@ -31,17 +12,39 @@ function MenuCtrl($scope) {
 	$scope.template = $scope.templates[0];
 
 	$scope.open = function() {
+		var config = {
+			method:'GET',
+			url:'/request',
+			headers:{resource:'/page'}
+		};
+		$http(config).
+			success(function(data, status, headers, config) {
+				$scope.pages = data;
+			}).
+			error(function(data, status, headers, config) {
+			});
 		$scope.template = $scope.templates[1];
 	}
 
 	$scope.close = function() {
 		$scope.template = $scope.templates[0];
-	}
+	};
 
 	$scope.menu = function(page) {
 		$scope.$root.content = {url:'content/' + page.uri};
-	}
+	};
 
-
-
+	$scope.$root.loadMenu = function() {
+		var config = {
+			method:'GET',
+			url:'/request',
+			headers:{resource:'/page'}
+		};
+		$http(config).
+			success(function(data, status, headers, config) {
+				$scope.pages = data;
+			}).
+			error(function(data, status, headers, config) {
+			});
+	};
 }

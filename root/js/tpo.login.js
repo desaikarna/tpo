@@ -125,6 +125,7 @@ function HeaderLoginCtrl($scope, $http) {
 		};
 		$http(config).
 			success(function(data, status, headers, config) {
+				$scope.loadMenu();
 				$scope.account.password.value = '';
 				$scope.account.id.value = data.id;
 				$scope.template = $scope.templates[0];
@@ -158,6 +159,7 @@ function HeaderLoginCtrl($scope, $http) {
 		};
 		$http(config).
 			success(function(data, status, headers, config) {
+				$scope.loadMenu();
 				$scope.account.passwordnew.value = '';
 				$scope.account.confirm.value = '';
 				$scope.account.id.value = data.id;
