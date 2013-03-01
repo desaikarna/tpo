@@ -1,0 +1,8 @@
+<div>
+    <form ng-submit="close()">
+        <input type="submit" value='Close' class='menu'>
+    </form>
+    <div ng-repeat='page in pages'>
+        <ng-include src="'partials/menu/item.html'"></ng-include>
+    </div>
+</div>

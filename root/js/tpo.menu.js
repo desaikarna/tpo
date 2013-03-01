@@ -4,9 +4,11 @@ function MenuCtrl($scope, $http) {
 
 	$scope.pages = [];
 
+	$scope.$root.content = {url: 'content/home.html'};
+
 	$scope.templates = [
 		{ url: 'partials/menu/closed.html'},
-		{ url: 'partials/menu/open.html'}
+		{ url: 'partials/menu/open2.html'}
 	];
 
 	$scope.template = $scope.templates[0];

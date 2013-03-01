@@ -12,7 +12,6 @@
         <!--<script type="text/javascript" src="http://cdn.thirdplanetout.com/js/tpo.login.js"></script>-->
         <script type="text/javascript" src="js/tpo.login.js"></script>
         <script type="text/javascript" src="js/tpo.menu.js"></script>
-        <script type="text/javascript" src="js/tpo.content.js"></script>
         <!--<link rel="stylesheet" type="text/css" href="http://cdn.thirdplanetout.com/css/tpo.website.css">-->
         <style type="text/css">
             *{margin:0;padding:0;border-width:0;}
@@ -50,10 +49,8 @@
 			<div class='body'>
 				<div class='wrapper foreground'>
                     <div ng-include src="'partials/menu.html'"></div>
-                    <div ng-controller="ContentCtrl">
-                        <div ng-include src="content.url"></div>
-                    </div>
-				</div>
+                    <div ng-include src="content.url"></div>
+                </div>
 			</div>
 		</div>
 	</body>
