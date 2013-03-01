@@ -2,9 +2,9 @@ angular.module('tpo', ['ui']);
 
 function MenuCtrl($scope, $http) {
 
-	$scope.pages = [];
-
 	$scope.$root.content = {url: 'content/home.html'};
+
+	$scope.pages = [];
 
 	$scope.templates = [
 		{ url: 'partials/menu/closed.html'},
