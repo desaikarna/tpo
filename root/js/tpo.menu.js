@@ -8,7 +8,7 @@ function MenuCtrl($scope, $http) {
 
 	$scope.templates = [
 		{ url: 'partials/menu/closed.html'},
-		{ url: 'partials/menu/open2.html'}
+		{ url: 'partials/menu/open.html'}
 	];
 
 	$scope.template = $scope.templates[0];
