@@ -1,0 +1,8 @@
+<div ng-show='page.show'>
+    <form ng-submit="menu({{page}})">
+        <input type="submit" value='{{page.title}}' class='menu'>
+    </form>
+    <div ng-repeat='page in page.subpages'>
+        <ng-include src="'partials/menu/item.html'"></ng-include>
+    </div>
+</div>
