@@ -5,6 +5,10 @@
     "express": "~3.0.6",
     "request": "*"
   },
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ThirdPlanetOut/tpo.git"
+	},
   "engines": {
     "node": "0.8.x",
     "npm": "1.1.x"
