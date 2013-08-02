@@ -35,7 +35,7 @@ app.get('/heartbeat', function(request, response){
 app.get('/', function(req, res) {
     res.render('index', {
         'locals' : {
-            'context' : ''
+            'context' : 'test'
         }
     });
 });
