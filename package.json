@@ -14,12 +14,17 @@
         "mu2express": "~0.0.1",
         "request": "~2.25.0"
     },
+    "devDependencies": {
+    },
+    "license": "MIT",
     "private": false,
     "repository": {
         "type": "git",
         "url": "https://github.com/ThirdPlanetOut/tpo.git"
     },
     "scripts": {
+        "preinstall": "",
+        "start": "node server.js"
     },
     "engines": {
         "node": "0.10.15",

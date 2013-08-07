@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var fs = require('fs');
-var mu2Express = require("mu2Express");
+var mu2Express = require("mu2express");
 
 var file = fs.readFileSync('./root/not-found.html');
 
@@ -27,6 +27,7 @@ app.use(express.cookieParser());
 app.engine('mustache', mu2Express.engine);
 app.set('view engine', 'mustache');
 app.set('views', __dirname + '/root');
+app.use(express.static('root'));
 
 app.get('/heartbeat', function(request, response){
 	response.json(200, {});
