@@ -1,16 +1,33 @@
 {
-  "name": "tpo",
-  "version": "0.0.1",
-  "dependencies": {
-    "express": "~3.0.6",
-    "request": "*"
-  },
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/ThirdPlanetOut/tpo.git"
-	},
-  "engines": {
-    "node": "0.8.x",
-    "npm": "1.1.x"
-  }
+    "name": "www.thirdplanetout.com",
+    "version": "0.0.1",
+    "author": "ThirdPlanetOut <support@thirdplanetout.com>",
+    "description": "The ThirdPlanetOut Application",
+    "contributors": [
+        {
+            "name": "Brian Amesbury",
+            "email": "r.brian.amesbury@gmail.com"
+        }
+    ],
+    "dependencies": {
+        "express": "~3.3.4",
+        "mu2express": "~0.0.1",
+        "request": "~2.25.0"
+    },
+    "devDependencies": {
+    },
+    "license": "MIT",
+    "private": false,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ThirdPlanetOut/tpo.git"
+    },
+    "scripts": {
+        "preinstall": "",
+        "start": "node server.js"
+    },
+    "engines": {
+        "node": "0.10.15",
+        "npm": "~1.3.5"
+    }
 }

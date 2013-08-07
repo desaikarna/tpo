@@ -1,0 +1,54 @@
+<html ng-app='tpo'>
+    <head>
+		<title>
+			Third Planet Out {{context}}
+		</title>
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui-ieshiv.min.js"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.js"></script>
+        <script type="text/javascript" src="http://cdn.thirdplanetout.com/js/tpo.login.js"></script>
+        <script type="text/javascript" src="js/tpo.menu.js"></script>
+        <link rel="stylesheet" type="text/css" href="http://cdn.thirdplanetout.com/css/tpo.website.css">
+        <style type="text/css">
+            *{margin:0;padding:0;border-width:0;}
+            .background{background:#252626;}
+            .foreground{background:#595B5C;}
+            .wrapper{height:100%;width:100%;position:relative;}
+            .body{height:80%;width: 80%;position:absolute;top:10%;right:10%;bottom:10%;left:10%;}
+            .content{height:90%;width:90%;position:absolute;top:5%;right:5%;bottom:5%;left:5%;overflow:hidden;}
+            .title{font-size:96px;}
+            .header{height:10%;width:80%;position:relative;left:10%;}
+            .menu{position:relative;left:-25px;z-index:1;background:#595B5C;border:solid;border-width:1px;border-color:black;text-align:left;}
+            .menuItem:hover{outline-color:#5EDAF2;border-color:#5EDAF2;background:#5EDAF2;}
+            .subpage{position:relative;left:10px;}
+            .level{position:absolute;right:0;z-index:1;}
+            .logintable{border:solid;border-width:1px;border-color:black;text-align:right;}
+            .loginform{display:inline;}
+            .logintext{background:transparent;border:solid;border-width:1px;border-color:#61C250;}
+            .green{border-color:#61C250;}
+            .orange{border-color:#EEAF30;}
+            .invalid{color:#F04646;outline-color:#F04646;border-color:#F04646;background:#966B6B;}
+            .font,input:focus,input:hover,select:focus,textarea:focus,button:focus{outline-color:#5EDAF2;border-color:#5EDAF2;}
+            .menuButton{border:solid; border-style: solid; border-color: #595B5C; border-width: 1; padding: 0}
+            .menuButton:hover{border:solid; border-style: solid; border-color: #5EDAF2; border-width: 1; padding: 0}
+            table input[type='submit']{background:transparent;min-width:25px;}
+            input,select,textarea,button,span{font-family:Arial,Verdana;}
+            input[type='submit']{padding:3px;}
+            input[type='text'],input[type='password']{color:white;}   
+            
+        </style>
+	</head>
+	<body>
+		<div class='wrapper background'>
+            <div ng-include src="'partials/header.html'"></div>
+
+			<div class='body'>
+				<div class='wrapper foreground'>
+                    <div ng-include src="'partials/menu.html'"></div>
+                    <div ng-include src="content.url"></div>
+                </div>
+			</div>
+		</div>
+	</body>
+</html>
