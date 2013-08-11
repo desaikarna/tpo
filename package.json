@@ -10,9 +10,9 @@
         }
     ],
     "dependencies": {
-        "express": "~3.3.4",
-        "mu2express": "~0.0.1",
-        "request": "~2.25.0"
+        "express": "3.3.4",
+        "mu2express": "0.0.1",
+        "request": "2.25.0"
     },
     "devDependencies": {
     },
@@ -23,7 +23,6 @@
         "url": "https://github.com/ThirdPlanetOut/tpo.git"
     },
     "scripts": {
-        "preinstall": "",
         "start": "node server.js"
     },
     "engines": {

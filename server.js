@@ -3,6 +3,10 @@ var app = express();
 var fs = require('fs');
 var mu2Express = require("mu2express");
 
+var tpo_cdn = process.env.TPO_CDN;
+var angular_cdn = process.env.ANGULAR_CDN;
+var angular_ui_cdn = process.env.ANGULAR_UI_CDN;
+
 var file = fs.readFileSync('./root/not-found.html');
 
 app.use(function (request, response, next) {
@@ -36,7 +40,9 @@ app.get('/heartbeat', function(request, response){
 app.get('/', function(req, res) {
     res.render('index', {
         'locals' : {
-            'context' : 'test'
+            'tpo_cdn' : tpo_cdn,
+            'angular_cdn' : angular_cdn,
+            'angular_ui_cdn' : angular_ui_cdn
         }
     });
 });
@@ -49,4 +55,6 @@ app.get('*', function(request, response){
     response.end();
 });
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT, function(){
+    console.log("listening on " + process.env.PORT)
+});
