@@ -12,3 +12,4 @@ tpo
 | TPO_CDN                | {http://cdn.example.com} ||
 | ANGULAR_CDN            | https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7 ||
 | ANGULAR_UI_CDN         | http://cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0 ||
+| LOG_ENTRIES            | ????? ||
